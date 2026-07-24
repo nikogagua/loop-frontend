@@ -1,0 +1,25 @@
+:root {
+  --primary-color: #020202;
+  --accent-color: #b2d5e5;
+  --background-color: #fff;
+  --text-color: #020202;
+
+  font-family: Arial, sans-serif;
+
+  --border-radius: 7px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 62.5%;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
