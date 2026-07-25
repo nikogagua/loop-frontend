@@ -1,11 +1,4 @@
-import "./App.css";
-
-function App() {
-  return (
-    <div>
-      <h1>Loop</h1>
-    </div>
-  );
-}
+import { useEffect, useState } from "react";
+function App() {}
 
 export default App;
