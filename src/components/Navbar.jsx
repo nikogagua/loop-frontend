@@ -8,7 +8,10 @@ function Navbar() {
       <Link to="/">Loop</Link>
       <div>
         {token ? (
-          <Link onClick={logout}>Logout</Link>
+          <>
+            <Link to="/create-post">Create Post</Link>
+            <button onClick={logout}>Logout</button>
+          </>
         ) : (
           <>
             <Link to="/login">Login</Link>
