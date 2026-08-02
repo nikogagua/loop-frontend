@@ -1,4 +1,20 @@
 import { apiRequest } from "./client";
+
 export function getAllPosts(page = 1, limit = 10) {
   return apiRequest(`/api/post?page=${page}&limit=${limit}`);
+}
+
+export function createPost(formData) {
+  const token = localStorage.getItem("token");
+  return fetch(`${import.meta.env.VITE_API_URL}/api/post/create-post`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: formData,
+  }).then(async (response) => {
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.message);
+    return data;
+  });
 }
