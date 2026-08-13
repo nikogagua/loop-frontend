@@ -1,10 +1,12 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RootLayout from "./pages/Root.jsx";
 import Home from "./pages/Home.jsx";
+import MyPosts from "./pages/MyPosts.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import CreatePost from "./pages/CreatePost.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import EditPost from "./pages/EditPost.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,22 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <CreatePost />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "my-posts",
+        element: (
+          <ProtectedRoute>
+            <MyPosts />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "edit-post/:id",
+        element: (
+          <ProtectedRoute>
+            <EditPost />
           </ProtectedRoute>
         ),
       },
