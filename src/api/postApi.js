@@ -1,6 +1,6 @@
 import { apiRequest } from "./client";
 
-export function getAllPosts(page = 1, limit = 10) {
+export function getAllPosts(page = 1, limit = 2) {
   return apiRequest(`/api/post?page=${page}&limit=${limit}`);
 }
 
