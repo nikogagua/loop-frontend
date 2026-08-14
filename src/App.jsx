@@ -7,6 +7,7 @@ import Register from "./pages/Register.jsx";
 import CreatePost from "./pages/CreatePost.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import EditPost from "./pages/EditPost.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,7 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      { path: "*", element: <NotFound /> },
     ],
   },
 ]);
