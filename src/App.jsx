@@ -8,6 +8,7 @@ import CreatePost from "./pages/CreatePost.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import EditPost from "./pages/EditPost.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import PostDetails from "./pages/PostDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,7 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      { path: "posts/:id", element: <PostDetails /> },
       { path: "*", element: <NotFound /> },
     ],
   },
