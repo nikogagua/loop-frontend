@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getAllPosts } from "../api/postApi";
 import Pagination from "../components/Pagination";
+import "../styles/posts.css";
 
 function Home() {
   const [posts, setPosts] = useState([]);
@@ -29,15 +31,26 @@ function Home() {
   if (posts.length === 0) return <p>No posts yet.</p>;
 
   return (
-    <section>
-      {posts.map((post) => (
-        <div key={post._id}>
-          <h3>{post.title}</h3>
-          <p>{post.body}</p>
-          {post.image && <img src={post.image} alt={post.title} />}
-          <p>By {post.author?.name}</p>
-        </div>
-      ))}
+    <section className="feed">
+      <div className="post-list">
+        {posts.map((post) => (
+          <Link to={`/posts/${post._id}`} key={post._id} className="post-item">
+            {post.image && (
+              <img
+                src={post.image}
+                alt={post.title}
+                className="post-item-image"
+              />
+            )}
+            <div className="post-item-content">
+              <h3>{post.title}</h3>
+              <p className="post-item-body">{post.body}</p>
+              <p className="post-item-author">By {post.author?.name}</p>
+            </div>
+          </Link>
+        ))}
+      </div>
+
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}

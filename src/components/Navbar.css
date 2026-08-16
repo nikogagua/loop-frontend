@@ -1,0 +1,26 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.navbar-logo {
+  font-size: var(--font-xl);
+  font-weight: bold;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  font-size: var(--font-base);
+}
+
+.btn-logout {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: var(--font-base);
+}
