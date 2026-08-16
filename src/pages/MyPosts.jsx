@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { deletePost, getMyPosts } from "../api/postApi";
 import { Link } from "react-router-dom";
+import "../styles/posts.css";
 
 function MyPosts() {
   const [error, setError] = useState("");
@@ -36,17 +37,35 @@ function MyPosts() {
   if (posts.length === 0) return <p>No posts yet.</p>;
 
   return (
-    <section>
-      {posts.map((post) => (
-        <div key={post._id}>
-          <h3>{post.title}</h3>
-          <p>{post.body}</p>
-          {post.image && <img src={post.image} alt={post.title} />}
-          <button onClick={() => handleDelete(post._id)}>Delete</button>
-
-          <Link to={`/edit-post/${post._id}`}>Edit</Link>
-        </div>
-      ))}
+    <section className="feed">
+      <div className="post-grid">
+        {posts.map((post) => (
+          <div key={post._id} className="post-card">
+            {post.image && (
+              <img
+                src={post.image}
+                alt={post.title}
+                className="post-card-image"
+              />
+            )}
+            <div className="post-card-content">
+              <h3>{post.title}</h3>
+              <p className="post-card-body">{post.body}</p>
+              <div className="post-card-actions">
+                <Link to={`/edit-post/${post._id}`} className="btn-secondary">
+                  Edit
+                </Link>
+                <button
+                  onClick={() => handleDelete(post._id)}
+                  className="btn-danger"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

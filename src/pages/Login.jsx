@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../api/authApi";
 import { useAuth } from "../context/Authcontext";
+import "../styles/forms.css";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -28,9 +29,11 @@ function Login() {
   }
 
   return (
-    <section>
-      <form onSubmit={handleSubmit}>
-        <div>
+    <section className="form-page">
+      <form onSubmit={handleSubmit} className="form">
+        <h2>Log In</h2>
+
+        <div className="form-group">
           <label htmlFor="email">Email</label>
           <input
             id="email"
@@ -40,7 +43,8 @@ function Login() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div>
+
+        <div className="form-group">
           <label htmlFor="password">Password</label>
           <input
             id="password"
@@ -50,12 +54,16 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        {error && <p>{error}</p>}
 
-        <button type="submit" disabled={loading}>
-          {loading ? "Logining in..." : "Login"}
+        {error && <p className="form-error">{error}</p>}
+
+        <button type="submit" disabled={loading} className="btn-primary">
+          {loading ? "Logging in..." : "Login"}
         </button>
-        <Link to="/register">Sign Up</Link>
+
+        <p className="form-footer">
+          Don't have an account? <Link to="/register">Sign Up</Link>
+        </p>
       </form>
     </section>
   );

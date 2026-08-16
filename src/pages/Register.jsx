@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../api/authApi";
 import { useAuth } from "../context/Authcontext";
+import "../styles/forms.css";
 
 function Register() {
   const [name, setName] = useState("");
@@ -28,19 +29,22 @@ function Register() {
   }
 
   return (
-    <section>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <div>
-            <label htmlFor="name">Name</label>
-            <input
-              id="name"
-              type="text"
-              name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
+    <section className="form-page">
+      <form onSubmit={handleSubmit} className="form">
+        <h2>Sign Up</h2>
+
+        <div className="form-group">
+          <label htmlFor="name">Name</label>
+          <input
+            id="name"
+            type="text"
+            name="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+
+        <div className="form-group">
           <label htmlFor="email">Email</label>
           <input
             id="email"
@@ -50,7 +54,8 @@ function Register() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div>
+
+        <div className="form-group">
           <label htmlFor="password">Password</label>
           <input
             id="password"
@@ -60,12 +65,16 @@ function Register() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        {error && <p>{error}</p>}
 
-        <button type="submit" disabled={loading}>
+        {error && <p className="form-error">{error}</p>}
+
+        <button type="submit" disabled={loading} className="btn-primary">
           {loading ? "Signing up..." : "Sign Up"}
         </button>
-        <Link to="/login">Log In</Link>
+
+        <p className="form-footer">
+          Already have an account? <Link to="/login">Log In</Link>
+        </p>
       </form>
     </section>
   );

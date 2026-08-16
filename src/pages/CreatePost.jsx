@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createPost } from "../api/postApi";
+import "../styles/forms.css";
 
 function CreatePost() {
   const [error, setError] = useState("");
@@ -24,24 +25,28 @@ function CreatePost() {
     }
   }
   return (
-    <section>
-      <form onSubmit={handleSubmit}>
-        <div>
+    <section className="form-page">
+      <form onSubmit={handleSubmit} className="form">
+        <h2>Create Post</h2>
+
+        <div className="form-group">
           <label htmlFor="title">Title</label>
           <input id="title" type="text" name="title" />
         </div>
-        <div>
+
+        <div className="form-group">
           <label htmlFor="body">Body</label>
-          <textarea id="body" name="body" />
+          <textarea id="body" name="body" rows="6" />
         </div>
-        <div>
+
+        <div className="form-group">
           <label htmlFor="image">Image</label>
           <input id="image" type="file" name="image" accept="image/*" />
         </div>
 
-        {error && <p>{error}</p>}
+        {error && <p className="form-error">{error}</p>}
 
-        <button type="submit" disabled={loading}>
+        <button type="submit" disabled={loading} className="btn-primary">
           {loading ? "Posting..." : "Post"}
         </button>
       </form>
