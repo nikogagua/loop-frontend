@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { updatePost, getPostById } from "../api/postApi";
 import "../styles/forms.css";
-import ImageUploadInput from "../components/ImageUploadInput";
 
 function EditPost() {
   const [error, setError] = useState("");
@@ -68,8 +67,15 @@ function EditPost() {
         </div>
 
         <div className="form-group">
-          <label>Image</label>
-          <ImageUploadInput initialPreview={post.image} />
+          <label htmlFor="image">Image</label>
+          {post.image && (
+            <img
+              src={post.image}
+              alt="Current"
+              className="form-preview-image"
+            />
+          )}
+          <input id="image" type="file" name="image" accept="image/*" />
         </div>
 
         {error && <p className="form-error">{error}</p>}
