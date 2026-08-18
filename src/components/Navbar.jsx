@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/Authcontext";
 import "./Navbar.css";
+import ThemeToggle from "./ThemeToggle";
 
 function Navbar() {
   const { token, logout } = useAuth();
@@ -10,6 +11,7 @@ function Navbar() {
         Loop
       </Link>
       <div className="navbar-links">
+        <ThemeToggle />
         {token ? (
           <>
             <Link to="/create-post">Create Post</Link>
