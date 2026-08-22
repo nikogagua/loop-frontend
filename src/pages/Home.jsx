@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { getAllPosts } from "../api/postApi";
-import Pagination from "../components/Pagination";
-import "../styles/posts.css";
+import Pagination from "../components/Pagination.jsx";
+import Post from "../components/Post.jsx";
+import "../styles/feed.css";
 
 function Home() {
   const [posts, setPosts] = useState([]);
@@ -33,21 +33,8 @@ function Home() {
   return (
     <section className="feed">
       <div className="post-list">
-        {posts.map((post) => (
-          <Link to={`/posts/${post._id}`} key={post._id} className="post-item">
-            {post.image && (
-              <img
-                src={post.image}
-                alt={post.title}
-                className="post-item-image"
-              />
-            )}
-            <div className="post-item-content">
-              <h3>{post.title}</h3>
-              <p className="post-item-body">{post.body}</p>
-              <p className="post-item-author">By {post.author?.name}</p>
-            </div>
-          </Link>
+        {posts.map((p) => (
+          <Post key={p._id} post={p} />
         ))}
       </div>
 

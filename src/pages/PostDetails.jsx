@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getPostById } from "../api/postApi";
-import "../styles/posts.css";
+import "../styles/feed.css";
+import "../components/Post.css";
 
 function PostDetails() {
   const { id } = useParams();
@@ -28,15 +29,13 @@ function PostDetails() {
   if (!post) return <p>Post not found.</p>;
 
   return (
-    <section className="post-details">
+    <section className="feed">
+      <span className="post-author">{post.author?.name}</span>
+      <h2 className="post-title">{post.title}</h2>
+      <p className="post-body-full">{post.body}</p>
       {post.image && (
-        <img src={post.image} alt={post.title} className="post-details-image" />
+        <img src={post.image} alt={post.title} className="post-image-full" />
       )}
-      <div className="post-details-content">
-        <h2>{post.title}</h2>
-        <p className="post-details-author">By {post.author?.name}</p>
-        <p className="post-details-body">{post.body}</p>
-      </div>
     </section>
   );
 }
