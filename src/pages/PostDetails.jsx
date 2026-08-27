@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getPostById } from "../api/postApi";
 import "../styles/feed.css";
 import "../components/Post.css";
+import Spinner from "../components/Spinner";
 
 function PostDetails() {
   const { id } = useParams();
@@ -24,7 +25,7 @@ function PostDetails() {
     loadPost();
   }, [id]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Spinner />;
   if (error) return <p>{error}</p>;
   if (!post) return <p>Post not found.</p>;
 
