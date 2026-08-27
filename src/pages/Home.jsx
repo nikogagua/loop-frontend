@@ -3,6 +3,7 @@ import { getAllPosts } from "../api/postApi";
 import Pagination from "../components/Pagination.jsx";
 import Post from "../components/Post.jsx";
 import "../styles/feed.css";
+import Spinner from "../components/Spinner.jsx";
 
 function Home() {
   const [posts, setPosts] = useState([]);
@@ -26,7 +27,7 @@ function Home() {
     loadPosts();
   }, [currentPage]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Spinner />;
   if (error) return <p>{error}</p>;
   if (posts.length === 0) return <p>No posts yet.</p>;
 

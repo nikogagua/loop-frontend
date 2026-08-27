@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { updatePost, getPostById } from "../api/postApi";
 import "../styles/forms.css";
 import ImageUploadInput from "../components/ImageUploadInput";
+import Spinner from "../components/Spinner";
 
 function EditPost() {
   const [error, setError] = useState("");
@@ -43,7 +44,7 @@ function EditPost() {
     }
   }
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Spinner />;
   if (error) return <p>{error}</p>;
   if (!post) return <p>Post not found.</p>;
 
