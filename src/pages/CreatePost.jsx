@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createPost } from "../api/postApi";
 import "../styles/forms.css";
-import ImageUploadInput from "../components/ImageUploadInput";
 
 function CreatePost() {
   const [error, setError] = useState("");
@@ -41,8 +40,8 @@ function CreatePost() {
         </div>
 
         <div className="form-group">
-          <label>Image</label>
-          <ImageUploadInput />
+          <label htmlFor="image">Image</label>
+          <input id="image" type="file" name="image" accept="image/*" />
         </div>
 
         {error && <p className="form-error">{error}</p>}

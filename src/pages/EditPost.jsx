@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { updatePost, getPostById } from "../api/postApi";
 import "../styles/forms.css";
+
 import ImageUploadInput from "../components/ImageUploadInput";
+import Spinner from "../components/Spinner";
 
 function EditPost() {
   const [error, setError] = useState("");
@@ -43,7 +45,7 @@ function EditPost() {
     }
   }
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Spinner />;
   if (error) return <p>{error}</p>;
   if (!post) return <p>Post not found.</p>;
 
@@ -68,8 +70,15 @@ function EditPost() {
         </div>
 
         <div className="form-group">
-          <label>Image</label>
-          <ImageUploadInput initialPreview={post.image} />
+          <label htmlFor="image">Image</label>
+          {post.image && (
+            <img
+              src={post.image}
+              alt="Current"
+              className="form-preview-image"
+            />
+          )}
+          <input id="image" type="file" name="image" accept="image/*" />
         </div>
 
         {error && <p className="form-error">{error}</p>}
