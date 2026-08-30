@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../api/authApi";
-import { useAuth } from "../context/Authcontext";
+import { useAuth } from "../context/AuthContext";
 import "../styles/forms.css";
 
 function Login() {
