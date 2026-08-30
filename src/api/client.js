@@ -12,7 +12,7 @@ export async function apiRequest(endpoint, options = {}) {
     },
   });
 
-  if (response.status === 401) {
+  if (response.status === 401 && token) {
     localStorage.removeItem("token");
     window.location.href = "/login";
     return;

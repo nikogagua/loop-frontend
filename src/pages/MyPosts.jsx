@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { deletePost, getMyPosts } from "../api/postApi";
 import { Link } from "react-router-dom";
 import Spinner from "../components/Spinner";
-// import "../styles/posts.css";
 
 function MyPosts() {
   const [error, setError] = useState("");
