@@ -9,6 +9,7 @@ import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import EditPost from "./pages/EditPost.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import PostDetails from "./pages/PostDetails.jsx";
+import VerifyEmail from "./pages/VerifyEmail.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
         path: "login",
         element: <Login />,
       },
+      { path: "verify-email/:token", element: <VerifyEmail /> },
       {
         path: "create-post",
         element: (
