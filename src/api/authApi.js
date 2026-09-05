@@ -12,3 +12,6 @@ export function loginUser(email, password) {
     body: JSON.stringify({ email, password }),
   });
 }
+export function verifyEmail(token) {
+  return apiRequest(`/api/auth/verify-email/${token}`);
+}
