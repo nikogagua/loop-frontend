@@ -10,6 +10,8 @@ import EditPost from "./pages/EditPost.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import PostDetails from "./pages/PostDetails.jsx";
 import VerifyEmail from "./pages/VerifyEmail.jsx";
+import ForgotPassword from "./pages/ForgotPassword.jsx";
+import ResetPassword from "./pages/ResetPassword.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,8 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       { path: "verify-email/:token", element: <VerifyEmail /> },
+      { path: "forgot-password", element: <ForgotPassword /> },
+      { path: "reset-password/:token", element: <ResetPassword /> },
       {
         path: "create-post",
         element: (
