@@ -15,3 +15,17 @@ export function loginUser(email, password) {
 export function verifyEmail(token) {
   return apiRequest(`/api/auth/verify-email/${token}`);
 }
+
+export function forgotPassword(email) {
+  return apiRequest("/api/auth/forgot-password", {
+    method: "POST",
+    body: JSON.stringify({ email }),
+  });
+}
+
+export function resetPassword(token, password) {
+  return apiRequest(`/api/auth/reset-password/${token}`, {
+    method: "POST",
+    body: JSON.stringify({ password }),
+  });
+}

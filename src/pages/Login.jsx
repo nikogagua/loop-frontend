@@ -64,6 +64,9 @@ function Login() {
         <p className="form-footer">
           Don't have an account? <Link to="/register">Sign Up</Link>
         </p>
+        <p className="form-footer">
+          <Link to="/forgot-password">Forgot password?</Link>
+        </p>
       </form>
     </section>
   );
